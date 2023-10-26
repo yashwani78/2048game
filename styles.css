@@ -109,7 +109,7 @@ p {
 }
 
 .game-over {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
@@ -130,6 +130,7 @@ p {
 }
 
 .try-again{
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;

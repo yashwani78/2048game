@@ -49,6 +49,16 @@ let render = () => {
     }
 }
 
+let newGame = () => {
+    grid =[ [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0] ];
+    generateInitialValues();
+    document.getElementsByClassName("score-count")[0].innerHTML = score;
+    return;
+}
+
 let generateInitialValues = () => {
     // Find 2 indices b/w 0 and 15 to be replaced with 2
     score = 0;
@@ -209,59 +219,33 @@ let isMovePossible = () => {
     return false;
 }
 
+let gameOverDiv = document.getElementsByClassName("game-over")[0];
 
 // Key Press functionality
 document.getElementsByTagName("body")[0].addEventListener("keydown", (e) => {
+    
+    let old_grid = JSON.stringify(grid);
+    
+    if (e.key === "ArrowUp") clickUp();
+    else if (e.key === "ArrowDown") clickDown();
+    else if (e.key === "ArrowLeft") clickLeft();
+    else if (e.key === "ArrowRight") clickRight();
+    
     let gen = isMovePossible();
     if(!gen) {
-        console.log("You Lose");
-        let gameDiv = document.getElementsByClassName("lose")[0];
-        
-        const OverDiv = document.createElement('div');
-        OverDiv.className = "over";
-
-        const tryAgainDiv = document.createElement('div');
-        tryAgainDiv.className = "try-again";
-
-        gameDiv.appendChild(gameOverDiv);
-        gameDiv.appendChild(tryAgainDiv);
-
-        // Get a reference to the div with the class .lose
-        const loseDiv = document.querySelector('.lose');
-
-        // Change the class name
-        loseDiv.classList.remove('lose');
-        loseDiv.classList.add('game-over');
-        changeClassAgain();
+        console.log("You Lose!");
+        gameOverDiv.style.display = 'flex';
         return;
     }
-    else {
-        
-        let old_grid = JSON.stringify(grid);
 
-        if (e.key === "ArrowUp") clickUp();
-        else if (e.key === "ArrowDown") clickDown();
-        else if (e.key === "ArrowLeft") clickLeft();
-        else if (e.key === "ArrowRight") clickRight();
-
-        if (old_grid === JSON.stringify(grid)) return;
-        document.getElementsByClassName("score-count")[0].innerHTML = (score);
-        generateRandomValue();
+    if (old_grid === JSON.stringify(grid)) return;
+    document.getElementsByClassName("score-count")[0].innerHTML = (score);
+    generateRandomValue();
     
-        render();
-    }
+    render();
     return;
 })
 
-function newGame() {
-    grid =[ [0,0,0,0],
-            [0,0,0,0],
-            [0,0,0,0],
-            [0,0,0,0] ];
-    generateInitialValues();
-    document.getElementsByClassName("score-count")[0].innerHTML = score;
-    return;
-}
 
 
 // New Game
@@ -271,35 +255,10 @@ document.getElementsByClassName("new-game")[0].addEventListener("click", functio
 console.log(document.getElementsByClassName("new-game")[0]);
 
 
-// if(!isMovePossible) {
-//     document.querySelector('.try-again').addEventListener("click", function() {
-//         newGame();
-//         const gameOverDiv = document.querySelector('.game-over');
-//         gameOverDiv.classList.remove('game-over');
-//         gameOverDiv.classList.add('lose');
-    
-//         const loseDiv = document.querySelector('.lose');
-//         const loseDivChild1 = document.querySelector('.over');
-//         const loseDivChild2 = document.querySelector('.try-again');
-//         loseDiv.removeChild(loseDivChild1);
-//         loseDiv.removeChild(loseDivChild2);
-//     });
-// }
-
-function changeClassAgain() {
-    document.querySelector('.try-again').addEventListener("click", function() {
-        newGame();
-        const gameOverDiv = document.querySelector('.game-over');
-        gameOverDiv.classList.remove('game-over');
-        gameOverDiv.classList.add('lose');
-    
-        const loseDiv = document.querySelector('.lose');
-        const loseDivChild1 = document.querySelector('.over');
-        const loseDivChild2 = document.querySelector('.try-again');
-        loseDiv.removeChild(loseDivChild1);
-        loseDiv.removeChild(loseDivChild2);
-    });
-}
+document.querySelector('.try-again').addEventListener("click", function() {
+    newGame();
+    gameOverDiv.style.display = 'none';
+});
 // Tic Tac Toe
 
 

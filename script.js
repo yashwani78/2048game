@@ -230,8 +230,10 @@ document.getElementsByTagName("body")[0].addEventListener("keydown", (e) => {
   else if (e.key === "ArrowDown") clickDown();
   else if (e.key === "ArrowLeft") clickLeft();
   else if (e.key === "ArrowRight") clickRight();
+  
+  if (old_grid === JSON.stringify(grid)) return;
   generateRandomValue();
-
+  
   let gen = isMovePossible();
   render();
   if (!gen) {
@@ -239,7 +241,6 @@ document.getElementsByTagName("body")[0].addEventListener("keydown", (e) => {
     gameOverDiv.style.display = 'flex';
     return;
   }
-  if (old_grid === JSON.stringify(grid)) return;
 
   document.getElementsByClassName("score-count")[0].innerHTML = (score);
 

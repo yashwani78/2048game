@@ -202,7 +202,7 @@ let generateRandomValue = () => {
       }
     }
   }
-  if (empty_spaces.length === 0) return false;
+  if (empty_spaces.length === 0) return;
   let new_val = Math.floor(Math.random() * empty_spaces.length);
   grid[empty_spaces[new_val][0]][empty_spaces[new_val][1]] = 2;
   return;
@@ -230,19 +230,19 @@ document.getElementsByTagName("body")[0].addEventListener("keydown", (e) => {
   else if (e.key === "ArrowDown") clickDown();
   else if (e.key === "ArrowLeft") clickLeft();
   else if (e.key === "ArrowRight") clickRight();
+  generateRandomValue();
 
   let gen = isMovePossible();
+  render();
   if (!gen) {
     console.log("You Lose!");
     gameOverDiv.style.display = 'flex';
     return;
   }
-
   if (old_grid === JSON.stringify(grid)) return;
-  document.getElementsByClassName("score-count")[0].innerHTML = (score);
-  generateRandomValue();
 
-  render();
+  document.getElementsByClassName("score-count")[0].innerHTML = (score);
+
   return;
 })
 

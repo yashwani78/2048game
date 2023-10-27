@@ -1,127 +1,84 @@
 *{
     margin: 0;
-    padding: 0;
 }
 
 body {
-    text-align: center;
+    height: 100vh;
+    background-color: #bbada0;
     display: flex;
-    height: 100vh;
-    justify-content:safe; 
-    align-content: center;
-    /* flex-wrap: nowrap; */
-    flex-direction: column;
-    margin: 0;
-    background-color:#bbada0
-}
-.container {
-    height: 100vh;
+    justify-content: center;
     align-items: center;
 }
+
 .game-info {
-    height: 10vh;
-    width: 26vw;
+    height: 5rem;
+    width: 24rem;
     display: flex;
-    margin: 0 auto;
-    margin-left: 72vh;
-    margin-top: 10vh;
     justify-content: space-between;
+    align-items:center;
+    /* margin-left: 0.4rem; */
+}
+
+.title, .score, .new-game {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
 .title {
-    margin: 2vh auto;
-    height: 10vh;
-    width: 20vw;
-    text-align: center;
-    width: auto;
-    display: flex;
+    height: 4rem;
+    width: 8rem;
     background-color: #887275;
-    justify-content: center;
-    align-items: center;
-    border-radius: 1vh;
-    color: whitesmoke;
-    font-size: 3vh;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    border-radius: 0.3rem;
+    color:#d3cac1;
 }
 
 .title2 {
-    height: 10vh;
+    width: 8rem;
+    height: 4rem;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: space-around;
+    flex-direction: row;
+}
 
+.score {
+    width: 8rem;
+    height: 1.7rem;
+    background-color: #887275;
+    border-radius: 0.3rem;
+    /* font-size: medium; */
+    color: white;
+}
+
+.score-title {
+    font-size:0.8rem;
+    font-weight: 900;
+}
+
+.score-count {
+    font-size: 1.2rem;
 }
 
 .new-game {
     cursor: pointer;
-    height: 5vh;
-    width: 15vh;
+    height: 1.7rem;
+    width: 8rem;
     background-color: #887275;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 0.3rem;
     color: white;
-    border-radius: 0.5vh;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 2.5vh;
+    font-weight: 700;
 }
-
-.score {
-    font-size:2vh;
-    height: 4vh;
-    width: 15vh;
-    display: flex;
-    justify-content: center;
-    background-color: #887275 ;
-    color: white;
-    align-items: center;
-    border-radius: 0.5vh;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-p {
-    /* font-size: 2.5vh; */
-    text-align: center;
-}
-
-.score-title, .score-count, .new-game>p {
-    margin: 0;
-}
-
-.score-count {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 100;
-    font-size: 2.5vh;
-}
-
-
 .game {
-    position: relative;
-    height: 40vh;
-    width: 20vw;
+    height: 24rem;
+    width: 24rem;
+    margin-top: 1.4rem;
     display: grid;
-    margin: 0 auto;
     grid-template-rows: repeat(4, 1fr);
-    margin-top: 5vh;
-}
-
-.game-over {
-    display: none;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    height:13vh;
-    width: 21.5vw;
-    position: relative;
-    top: -28vh;
-    left: 0.2vh;
-    color: #1b1b1b;
-    background-color: rgb(131, 172, 51);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 4vh;
 }
 
 .row {
@@ -129,28 +86,14 @@ p {
     grid-template-columns: repeat(4, 1fr);
 }
 
-.try-again{
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 300;
-    height: 2.5vw;
-    width: 15vh;
-    font-size:3vh;
-    background-color: rgb(113, 150, 21);
-    color:white;
-    border-radius: 1vh;
-}
-
-.over {
-    font-weight: 900;
+.cell, .game-over, .try-again {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .cell {
-    width: 5vw;
-    height: 10vh;
-    border: 0.6vh solid #bbada0;
+    width: 5.5rem;
+    height: 5.5rem;
+    border: 5px solid #bbada0;
     background: #d3cac1;
     font-size: 30px;
     font-family: 'Google Sans';
@@ -158,8 +101,40 @@ p {
     align-items: center;
     justify-content: center;
     color: white;
-    font-weight: 500;
-    font-size: 2.3vw;
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 1vh;
+    font-weight: 300;
+    border-radius: 0.5rem;
+}
+
+.game-over {
+    position: relative;
+    top: -24.3rem;
+    height: 24rem;
+    width: 24rem;
+    background-color: rgb(131, 172, 51, 0.75);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    color: #1b1b1b;
+    margin-left: 0.3rem;
+}
+
+.over {
+    font-weight: 800;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.try-again {
+    cursor: pointer;
+    height: 3.5rem;
+    width: 10rem;
+    background-color: rgb(113, 150, 21);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+    border-radius: 1rem;
 }

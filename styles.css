@@ -96,12 +96,13 @@ body {
     border: 5px solid #bbada0;
     background: #d3cac1;
     font-size: 30px;
-    font-family: 'Google Sans';
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-weight: 300;
+    font-weight: 500;
+    font-size: 2rem;
     border-radius: 0.5rem;
 }
 
